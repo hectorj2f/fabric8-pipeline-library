@@ -55,10 +55,10 @@ def call(body) {
                 sh "make ${makeTarget}"
             }
 
-            stage ('check go format binary'){
-                version = "SNAPSHOT-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
-                sh "make check-go-format"
-            }
+            //stage ('check go format binary'){
+            //    version = "SNAPSHOT-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+            //    sh "make check-go-format"
+            //}
 
             stage ('run unit tests'){
                 version = "SNAPSHOT-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"

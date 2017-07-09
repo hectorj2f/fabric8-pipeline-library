@@ -92,6 +92,14 @@ def call(body) {
               sh "docker exec -t \"${dockerContainerName}\" bash -ec 'make test-integration'"
             }
 
+            stage ('delete builder'){
+              sh "docker rm --force ${dockerContainerName}"
+            }
+
+            stage ('delete postgreSQL container'){
+              sh "docker rm --force ${dockerDbContainerName}"
+            }
+
             stage ('push snapshot image'){
                 sh "docker push ${imageName}:${version}"
             }
